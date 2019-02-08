@@ -8,12 +8,12 @@ const readline = require("readline");
 
 clear();
 
-console.log(chalk.green.dim(figlet.textSync("RWizard", { horizontalLayout: "full" })));
+console.log(chalk.green.dim(figlet.textSync("Duck wizard", { horizontalLayout: "full" })));
 files.checkInit().then(() => {
     const rl = readline.createInterface({
         input: process.stdin,
         output: process.stdout,
-        prompt: chalk.black.bgYellow(" reactcli ") + " > "
+        prompt: chalk.black.bgYellow(" $ DW $ ") + " > "
     });
     rl.prompt();
 
