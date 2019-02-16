@@ -1,8 +1,7 @@
-#!/usr/bin/env node
 const chalk = require("chalk");
 const clear = require("clear");
 const figlet = require("figlet");
-const files = require("./lib/files");
+const files = require("./src/files");
 const inquirer = require("inquirer");
 const readline = require("readline");
 

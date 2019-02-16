@@ -1,11 +1,12 @@
 {
     "name": "duck-wizard",
-    "version": "0.0.1",
+    "version": "0.0.1-alpha.0",
     "description": "Duck wizard",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node index.js"
+        "start": "node index.js",
+        "build": "rollup --config"
     },
     "bin": {
         "rr-cli": "./index.js"
@@ -20,5 +21,11 @@
         "figlet": "^1.2.1",
         "inquirer": "^6.2.0",
         "minimist": "^1.2.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.3.3",
+        "@babel/preset-env": "^7.3.1",
+        "rollup": "^1.1.2",
+        "rollup-plugin-babel": "^4.3.2"
     }
 }
