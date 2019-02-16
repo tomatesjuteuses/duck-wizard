@@ -1,14 +1,14 @@
 import chalk from 'chalk'
 import clear from 'clear'
 import figlet from 'figlet'
-import inquirer from 'inquirer'
 import readline from 'readline'
 import * as files from './src/files'
+import { CMD, exec } from './src/commands'
 
-clear()
+const launch = async () => {
+    console.log( chalk.green.dim( figlet.textSync( 'Duck wizard', { horizontalLayout: 'full' } ) ) )
+    await files.checkInit()
 
-console.log( chalk.green.dim( figlet.textSync( 'Duck wizard', { horizontalLayout: 'full' } ) ) )
-files.checkInit().then( () => {
     const rl = readline.createInterface( {
         input: process.stdin,
         output: process.stdout,
@@ -17,20 +17,18 @@ files.checkInit().then( () => {
     rl.prompt()
 
     rl.on( 'line', line => {
-        switch ( line.trim() ) {
-            case 'hello':
-                console.log( 'world!' )
-                break
-            case 'exit':
-                rl.close()
-                break
-            default:
-                console.log( `Say what? I might have heard '${line.trim()}'` )
-                break
+        const command = exec[line.trim()]
+        if ( command ) command( rl )
+        else {
+            console.log( `Say what? I might have heard '${line.trim()}'` )
+            console.log( 'Available commands: ' + Object.values( CMD ).join( ' | ' ) )
         }
         rl.prompt()
     } ).on( 'close', () => {
         console.log( 'Have a great day!' )
         process.exit( 0 )
     } )
-} )
+}
+
+clear()
+launch()
