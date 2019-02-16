@@ -16,23 +16,33 @@ export const directoryExists = filePath => {
 }
 export const checkInit = async () => {
     if ( !fs.exists( CONF_FILE_NAME + CONF_FILE_EXTENSION ) ) {
-        const question = {
-            name: 'srcDirectory',
-            message: 'Src directory?',
-            default: 'src'
-        }
-        const answers = await inquirer.prompt( question )
-        console.log( answers )
-        fs.writeFile( CONF_FILE_NAME + CONF_FILE_EXTENSION, JSON.stringify( answers ), err => {
-            if ( err ) {
-                console.log( 'There has been an error saving your configuration data.' )
-                console.log( err.message )
-                return
+        const questions = [
+            {
+                name: 'srcDirectory',
+                message: 'Src directory?',
+                default: 'src'
+            },
+            {
+                name: 'modulesDirectory',
+                message: 'Modules directory?',
+                default: 'modules'
             }
-            console.log( 'Configuration saved successfully.' )
-            return Promise.resolve()
-        } )
+        ]
+        const answers = await inquirer.prompt( questions )
+        console.log( answers )
+        fs.writeFile( CONF_FILE_NAME + CONF_FILE_EXTENSION, JSON.stringify( answers ), writeEnd )
     } else {
+        console.log( 'Project already configured' )
         return Promise.resolve()
     }
+}
+
+const writeEnd = err => {
+    if ( err ) {
+        console.log( 'There has been an error saving your configuration data.' )
+        console.log( err.message )
+        return
+    }
+    console.log( 'Configuration saved successfully.' )
+    return Promise.resolve()
 }

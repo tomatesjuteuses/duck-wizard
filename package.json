@@ -8,7 +8,8 @@
         "build:local": "rollup --config -w",
         "eslint:local": "eslint --ext .js src --cache",
         "eslint:fix": "eslint --ext .js src/ --fix",
-        "start": "node lib/duck-wizard.js",
+        "start:local": "node lib/duck-wizard.js",
+        "start": "npm run build && node lib/duck-wizard.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "bin": {
