@@ -1,11 +1,10 @@
-var rollup = require("rollup");
-var babel = require("rollup-plugin-babel");
+const babel = require( 'rollup-plugin-babel' )
 
 module.exports = {
-    input: "index.js",
+    input: 'index.js',
     output: {
-        file: "lib/duck-wizard.js",
-        format: "umd"
+        file: 'lib/duck-wizard.js',
+        format: 'umd'
     },
-    plugins: [babel()]
-};
+    plugins: [babel( { runtimeHelpers: true } )]
+}

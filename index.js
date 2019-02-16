@@ -3,7 +3,7 @@ import clear from 'clear'
 import figlet from 'figlet'
 import inquirer from 'inquirer'
 import readline from 'readline'
-import files from './src/files'
+import * as files from './src/files'
 
 clear()
 
