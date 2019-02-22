@@ -4,8 +4,12 @@
     "description": "Duck wizard",
     "main": "lib/duck-wizard.js",
     "scripts": {
-        "build": "rollup --config",
-        "build:local": "rollup --config -w",
+        "build:lib": "rollup --config rollup.config.js",
+        "build:lib:local": "rollup --config rollup.config.js -w",
+        "build:cli": "rollup --config rollup.config.cli.js",
+        "build:cli:local": "rollup --config rollup.config.cli.js -w",
+        "build:local": "npm run build:lib:local & npm run build:cli:local",
+        "build": "npm run build:lib & npm run build:cli",
         "eslint:local": "eslint --ext .js src --cache",
         "eslint:fix": "eslint --ext .js src/ --fix",
         "start:local": "node lib/duck-wizard.js",
@@ -13,7 +17,8 @@
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "bin": {
-        "d-wiz": "./lib/duck-wizard.js"
+        "d-wiz": "./lib/duck-wizard.js",
+        "d-wiz-cli": "./lib/duck-wizard-cli.js"
     },
     "author": "jbureau",
     "license": "ISC",
