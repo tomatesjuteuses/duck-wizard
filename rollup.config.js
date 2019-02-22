@@ -4,7 +4,8 @@ module.exports = {
     input: 'index.js',
     output: {
         file: 'lib/duck-wizard.js',
-        format: 'umd'
+        format: 'cjs',
+        banner: '#!/usr/bin/env node'
     },
     plugins: [babel( { runtimeHelpers: true } )]
 }
