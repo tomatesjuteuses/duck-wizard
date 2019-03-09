@@ -8,7 +8,8 @@ const doExit = rl => {
 
 export const INLINE_OPTIONS = Object.freeze( {
     INIT: 'init',
-    MODULE: 'module'
+    MODULE: ['module', 'm'],
+    HELP: ['--help', '--h']
 } )
 
 export const CMD = Object.freeze( {
