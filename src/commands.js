@@ -6,9 +6,14 @@ const doExit = rl => {
     rl.close()
 }
 
-export const CMD = Object.freeze( {
-    EXIT: 'exit',
+export const INLINE_OPTIONS = Object.freeze( {
+    INIT: 'init',
     MODULE: 'module'
+} )
+
+export const CMD = Object.freeze( {
+    ...INLINE_OPTIONS,
+    EXIT: 'exit'
 } )
 
 export const exec = Object.freeze( {
