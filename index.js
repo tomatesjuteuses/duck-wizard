@@ -1,4 +1,3 @@
-import * as files from './src/files'
 import { isEmpty, isCommand } from './src/utils'
 import { INLINE_OPTIONS } from './src/commands'
 
